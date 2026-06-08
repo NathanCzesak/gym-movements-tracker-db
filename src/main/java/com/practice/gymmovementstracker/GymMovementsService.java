@@ -21,6 +21,9 @@ public class GymMovementsService {
     }
 
     public void deleteMovement(Long id) {
+        if(!repos.existsById(id)){
+            throw new RuntimeException("Gym Movement with id " + id + " does not exist");
+        }
         repos.deleteById(id);
     }
 
